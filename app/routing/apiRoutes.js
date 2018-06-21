@@ -1,22 +1,17 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var friends = require("../data/friends");
+var router =  express.Router();
 
-var app = express();
-var PORT = process.env.PORT || 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.get("/api/friends", function(req, res) {
-    return res.json(characters);
+router.get("/friends", (req, res)=> {
+    return res.json(friends);
   });
 
-  app.post("/api/friends", function(req, res) {
+router.post("/friends", (req, res)=> {
 
     var newFriend = req.body;
-  
-    newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
   
     console.log(newFriend);
   
@@ -24,4 +19,5 @@ app.get("/api/friends", function(req, res) {
   
     res.json(newFriend);
   });
-  
+
+  module.exports = router;  
