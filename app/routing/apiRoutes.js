@@ -37,8 +37,7 @@ router.post("/friends", (req, res) => {
   var matchName = match2.name;
   var matchImage = match2.image;
 
-
-  res.json({name: matchName, image: matchImage});
+  res.json(match2);
   console.log(matchName, matchImage);
 });
 
